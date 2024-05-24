@@ -1,5 +1,7 @@
+//Get the circle element
 const circle = document.getElementById("circle");
 
+//Check if the browser supports the Web Audio API
 async function setupAudio() {
   try {
     if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
@@ -16,8 +18,8 @@ async function setupAudio() {
     const microphone = audioContext.createMediaStreamSource(stream);
     const scriptProcessor = audioContext.createScriptProcessor(2048, 1, 1);
 
-    analyser.smoothingTimeConstant = 0.8;
-    analyser.fftSize = 1024;
+    analyser.smoothingTimeConstant = 0.58;
+    analyser.fftSize = 512;
 
     microphone.connect(analyser);
     analyser.connect(scriptProcessor);
